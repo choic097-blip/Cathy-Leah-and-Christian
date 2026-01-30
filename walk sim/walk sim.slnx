@@ -1,4 +1,8 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Hertzole.GoldPlayer.Editor.csproj" />
+  <Project Path="Hertzole.GoldPlayer.csproj" />
+  <Project Path="Hertzole.GoldPlayer.Example.csproj" />
+  <Project Path="Hertzole.GoldPlayer.Tests.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>
