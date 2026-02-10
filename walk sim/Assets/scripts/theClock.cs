@@ -11,6 +11,7 @@ public class theClock : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        hours = 8;
         StartCoroutine(IncrementRoutine());
     }
 

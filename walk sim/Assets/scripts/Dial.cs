@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using Hertzole.GoldPlayer;
 
 public class Dial : MonoBehaviour
 {
@@ -13,11 +13,14 @@ public class Dial : MonoBehaviour
     public string[] superLate;
     public float textSpeed;
     public theClock theetime;
+    public GameObject playerController;
+    public GameObject myDialBox;
     private int index;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
+        myDialBox.SetActive(true);
         int theTimer = theetime.hours;
         if (theTimer is >= 0 and <= 6){
             lines = superLate;
@@ -92,7 +95,9 @@ public class Dial : MonoBehaviour
         }
         else
         {
-            print("done");
+            myDialBox.SetActive(false);
+            playerController.GetComponent<GoldPlayerController>().enabled = true;
+            GetComponent<Dial>().enabled = false;
         }
     }
 }
