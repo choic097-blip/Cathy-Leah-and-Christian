@@ -1,3 +1,4 @@
+using System.Collections;
 using Hertzole.GoldPlayer;
 using UnityEngine;
 
@@ -39,36 +40,10 @@ public class RayCast : MonoBehaviour
             if (mouseDetect.collider.CompareTag("Door"))
             {
                 print("I'm dooring it.");
-                //playerController.GetComponent<GoldPlayerController>().enabled = false;
-                //mouseDetect.collider.GetComponent<Dial>().enabled = true;
-                mouseDetect.collider.GetComponent<Animator>();
-                SetBool("clicked", true);
+                Animator doorAnimator = mouseDetect.collider.GetComponent<Animator>();
+                doorAnimator.SetTrigger("clicked");
             }
-            
         }
+    }
 
-            
-        // if(Physics.Raycast(mouseRay, out mouseDetect)) 
-        //     {
-        //         //display name
-        //         if(mouseDetect.collider.CompareTag("Character"))
-        //         print("character");
-        //     }
-                
-        //     }
-        //     else
-        //     {
-        //         print("none");
-        //     }
-        // if(Physics.Raycast(mouseRay, out mouseDetect, 2f)) 
-        //     {
-        //         //InformationText it = mouseDetect.collider.GetComponent<InformationText>();
-        //     //if(it != null){
-        //         //information.text = it.information;
-        //     }
-        //     else
-        //     {
-        //     }
-        }
-            
     }
