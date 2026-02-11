@@ -35,6 +35,15 @@ public class RayCast : MonoBehaviour
                 playerController.GetComponent<GoldPlayerController>().enabled = false;
                 mouseDetect.collider.GetComponent<Dial>().enabled = true;
             }
+
+            if (mouseDetect.collider.CompareTag("Door"))
+            {
+                print("I'm dooring it.");
+                //playerController.GetComponent<GoldPlayerController>().enabled = false;
+                //mouseDetect.collider.GetComponent<Dial>().enabled = true;
+                mouseDetect.collider.GetComponent<Animator>();
+                SetBool("clicked", true);
+            }
             
         }
 
