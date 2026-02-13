@@ -22,7 +22,7 @@ public class RayCast : MonoBehaviour
         {
             MouseSelect();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             playerController.GetComponent<GoldPlayerController>().enabled = false;
             contrlmenu.SetActive(true);
