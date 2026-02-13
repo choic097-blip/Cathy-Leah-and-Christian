@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class theClock : MonoBehaviour
 {
@@ -8,6 +10,15 @@ public class theClock : MonoBehaviour
     public int hours;
     public int minutes;
     public int multiplier;
+    [SerializeField] private Texture2D skyboxNight;
+    [SerializeField] private Texture2D skyboxSunrise;
+    [SerializeField] private Texture2D skyboxDay;
+    [SerializeField] private Texture2D skyboxSunset;
+    [SerializeField] private Gradient graddientNightToSunrise;
+    [SerializeField] private Gradient graddientSunriseToDay;
+    [SerializeField] private Gradient graddientDayToSunset;
+    [SerializeField] private Gradient graddientSunsetToNight;
+    [SerializeField] private Light globalLight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +31,7 @@ public class theClock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             multiplier *= 2;
             if (multiplier > 16)
@@ -46,6 +57,58 @@ public class theClock : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             minutes+= 1 * multiplier;
+        }
+    }
+
+    private void OnMinutesChange(int hours)
+    {
+        globalLight.transform.Rotate(Vector3.up, (1f / (1440f / 4f)) * 360f, Space.World);
+    }
+ 
+    private void OnHoursChange(int hours)
+    {
+        if (hours == 6)
+        {
+            StartCoroutine(LerpSkybox(skyboxNight, skyboxSunrise, 10f));
+            StartCoroutine(LerpLight(graddientNightToSunrise, 10f));
+        }
+        else if (hours == 8)
+        {
+            StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, 10f));
+            StartCoroutine(LerpLight(graddientSunriseToDay, 10f));
+        }
+        else if (hours == 18)
+        {
+            StartCoroutine(LerpSkybox(skyboxDay, skyboxSunset, 10f));
+            StartCoroutine(LerpLight(graddientDayToSunset, 10f));
+        }
+        else if (hours == 22)
+        {
+            StartCoroutine(LerpSkybox(skyboxSunset, skyboxNight, 10f));
+            StartCoroutine(LerpLight(graddientSunsetToNight, 10f));
+        }
+    }
+ 
+    private IEnumerator LerpSkybox(Texture2D a, Texture2D b, float time)
+    {
+        RenderSettings.skybox.SetTexture("_Texture1", a);
+        RenderSettings.skybox.SetTexture("_Texture2", b);
+        RenderSettings.skybox.SetFloat("_Blend", 0);
+        for (float i = 0; i < time; i += Time.deltaTime)
+        {
+            RenderSettings.skybox.SetFloat("_Blend", i / time);
+            yield return null;
+        }
+        RenderSettings.skybox.SetTexture("_Texture1", b);
+    }
+ 
+    private IEnumerator LerpLight(Gradient lightGradient, float time)
+    {
+        for (float i = 0; i < time; i += Time.deltaTime)
+        {
+            globalLight.color = lightGradient.Evaluate(i / time);
+            RenderSettings.fogColor = globalLight.color;
+            yield return null;
         }
     }
 }
