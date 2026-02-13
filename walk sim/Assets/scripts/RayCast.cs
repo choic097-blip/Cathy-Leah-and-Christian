@@ -8,6 +8,7 @@ public class RayCast : MonoBehaviour
     
     public Camera playerCam;
     public GameObject playerController;
+    public GameObject contrlmenu;
     void Start()
     {
         
@@ -20,7 +21,16 @@ public class RayCast : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             MouseSelect();
-
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            playerController.GetComponent<GoldPlayerController>().enabled = false;
+            contrlmenu.SetActive(true);
+        } 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            playerController.GetComponent<GoldPlayerController>().enabled = true;
+            contrlmenu.SetActive(false);
         }
     }
 
