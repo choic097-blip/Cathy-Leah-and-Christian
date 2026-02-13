@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - Door
+  - Beachball
   layers:
   - Default
   - TransparentFX

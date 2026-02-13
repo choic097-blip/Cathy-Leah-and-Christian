@@ -43,6 +43,14 @@ public class RayCast : MonoBehaviour
                 Animator doorAnimator = mouseDetect.collider.GetComponent<Animator>();
                 doorAnimator.SetTrigger("clicked");
             }
+
+            if (mouseDetect.collider.CompareTag("Beachball"))
+            {
+                print("I'm balling it.");
+                Animator ballAnimator = mouseDetect.collider.GetComponent<Animator>();
+                ballAnimator.SetTrigger("clicked");
+            }
+
         }
     }
 
