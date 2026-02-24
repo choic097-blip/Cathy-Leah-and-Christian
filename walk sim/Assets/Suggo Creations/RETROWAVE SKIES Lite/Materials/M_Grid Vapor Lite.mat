@@ -63,16 +63,16 @@ Material:
     - _Cull: 2
     - _DstBlend: 0
     - _ENABLE_PARALLAX_EFFECT: 1
-    - _GridRotation: 0
+    - _GridRotation: -180
     - _Grid_Line_X_Width: 0.9
     - _Grid_Line_Y_Width: 0.9
-    - _Metallic: 0.3
+    - _Metallic: 1
     - _Parallax_Distance: -0.5
     - _Parallax_Offset: -0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.922
+    - _Smoothness: 0.679
     - _SrcBlend: 1
     - _Surface: 0
     - _USETEXTUREBOOL: 1
@@ -81,9 +81,9 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _GridColor: {r: 0.27667606, g: 1.0196079, b: 0.25098038, a: 1}
+    - _GridColor: {r: 1.181468, g: 0.17276183, b: 1.0544981, a: 1}
     - _GridSpeed: {r: 0, g: -0.1, b: 0, a: 0}
-    - _GroundColor: {r: 0.05513528, g: 0.19217989, b: 0.5566038, a: 1}
+    - _GroundColor: {r: 0.058691785, g: 0, b: 0.3584906, a: 1}
     - _Parallax_Color: {r: 0.27049786, g: 0.7156938, b: 0.637597, a: 1}
     - _Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
