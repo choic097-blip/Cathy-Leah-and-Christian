@@ -9,6 +9,7 @@ public class RayCast : MonoBehaviour
     public Camera playerCam;
     public GameObject playerController;
     public GameObject contrlmenu;
+    public AudioSource audioSource;
     void Start()
     {
         
@@ -59,6 +60,8 @@ public class RayCast : MonoBehaviour
                 print("I'm balling it.");
                 Animator ballAnimator = mouseDetect.collider.GetComponent<Animator>();
                 ballAnimator.SetTrigger("clicked");
+                AudioClip playingit = mouseDetect.collider.GetComponent<audioholdernm>().audioclip;
+                audioSource.PlayOneShot(playingit);
             }
 
         }

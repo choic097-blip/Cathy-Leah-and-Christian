@@ -44,10 +44,11 @@ public class theClock : MonoBehaviour
         {
             minutes = 0;
             hours++;
-        }
-        if (hours >= 24)
-        {
-            hours = 0;
+            //OnHoursChange();
+            if (hours >= 24)
+            {
+                hours = 0;
+            }
         }
     }
 
@@ -60,55 +61,59 @@ public class theClock : MonoBehaviour
         }
     }
 
-    private void OnMinutesChange(int hours)
-    {
-        globalLight.transform.Rotate(Vector3.up, (1f / (1440f / 4f)) * 360f, Space.World);
-    }
+    // private void OnMinutesChange(int hours)
+    // {
+    //     globalLight.transform.Rotate(Vector3.up, (1f / (1440f / 4f)) * 360f, Space.World);
+    // }
  
-    private void OnHoursChange(int hours)
-    {
-        if (hours == 6)
-        {
-            StartCoroutine(LerpSkybox(skyboxNight, skyboxSunrise, 10f));
-            StartCoroutine(LerpLight(graddientNightToSunrise, 10f));
-        }
-        else if (hours == 8)
-        {
-            StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, 10f));
-            StartCoroutine(LerpLight(graddientSunriseToDay, 10f));
-        }
-        else if (hours == 18)
-        {
-            StartCoroutine(LerpSkybox(skyboxDay, skyboxSunset, 10f));
-            StartCoroutine(LerpLight(graddientDayToSunset, 10f));
-        }
-        else if (hours == 22)
-        {
-            StartCoroutine(LerpSkybox(skyboxSunset, skyboxNight, 10f));
-            StartCoroutine(LerpLight(graddientSunsetToNight, 10f));
-        }
-    }
+    // private void OnHoursChange()
+    // {
+    //     if (hours == 6)
+    //     {
+    //         StartCoroutine(LerpSkybox(skyboxNight, skyboxSunrise, 10f));
+    //         StartCoroutine(LerpLight(graddientNightToSunrise, 10f));
+    //         print("lerping");
+    //     }
+    //     else if (hours == 8)
+    //     {
+    //         StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, 10f));
+    //         StartCoroutine(LerpLight(graddientSunriseToDay, 10f));
+    //         print("lerping");
+    //     }
+    //     else if (hours == 18)
+    //     {
+    //         StartCoroutine(LerpSkybox(skyboxDay, skyboxSunset, 10f));
+    //         StartCoroutine(LerpLight(graddientDayToSunset, 10f));
+    //         print("lerping");
+    //     }
+    //     else if (hours == 22)
+    //     {
+    //         StartCoroutine(LerpSkybox(skyboxSunset, skyboxNight, 10f));
+    //         StartCoroutine(LerpLight(graddientSunsetToNight, 10f));
+    //         print("lerping");
+    //     }
+    // }
  
-    private IEnumerator LerpSkybox(Texture2D a, Texture2D b, float time)
-    {
-        RenderSettings.skybox.SetTexture("_Texture1", a);
-        RenderSettings.skybox.SetTexture("_Texture2", b);
-        RenderSettings.skybox.SetFloat("_Blend", 0);
-        for (float i = 0; i < time; i += Time.deltaTime)
-        {
-            RenderSettings.skybox.SetFloat("_Blend", i / time);
-            yield return null;
-        }
-        RenderSettings.skybox.SetTexture("_Texture1", b);
-    }
+    // private IEnumerator LerpSkybox(Texture2D a, Texture2D b, float minutes)
+    // {
+    //     RenderSettings.skybox.SetTexture("_Texture1", a);
+    //     RenderSettings.skybox.SetTexture("_Texture2", b);
+    //     RenderSettings.skybox.SetFloat("_Blend", 0);
+    //     for (float i = 0; i < minutes; i += Time.deltaTime)
+    //     {
+    //         RenderSettings.skybox.SetFloat("_Blend", i / minutes);
+    //         yield return null;
+    //     }
+    //     RenderSettings.skybox.SetTexture("_Texture1", b);
+    // }
  
-    private IEnumerator LerpLight(Gradient lightGradient, float time)
-    {
-        for (float i = 0; i < time; i += Time.deltaTime)
-        {
-            globalLight.color = lightGradient.Evaluate(i / time);
-            RenderSettings.fogColor = globalLight.color;
-            yield return null;
-        }
-    }
+    // private IEnumerator LerpLight(Gradient lightGradient, float minutes)
+    // {
+    //     for (float i = 0; i < minutes; i += Time.deltaTime)
+    //     {
+    //         globalLight.color = lightGradient.Evaluate(i / minutes);
+    //         RenderSettings.fogColor = globalLight.color;
+    //         yield return null;
+    //     }
+    // }
 }
