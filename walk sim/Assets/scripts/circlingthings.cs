@@ -14,6 +14,7 @@ public class circlingthings : MonoBehaviour
     void Start() 
     {
         angle = Random.Range(1f,360f);
+        speed = Random.Range(0.9f, 1.5f);
     }
     void Update()
     {
