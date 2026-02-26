@@ -4,5 +4,8 @@
   <Project Path="Hertzole.GoldPlayer.csproj" />
   <Project Path="Hertzole.GoldPlayer.Example.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="HeurekaGames.AssetHunterPRO.Editor.csproj" />
+  <Project Path="HeurekaGames.Utils.csproj" />
   <Project Path="Hertzole.GoldPlayer.Tests.csproj" />
+  <Project Path="Heureka.Upgrade.csproj" />
 </Solution>
