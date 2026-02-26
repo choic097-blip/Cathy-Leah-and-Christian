@@ -60,8 +60,8 @@ public class RayCast : MonoBehaviour
                 print("I'm balling it.");
                 Animator ballAnimator = mouseDetect.collider.GetComponent<Animator>();
                 ballAnimator.SetTrigger("clicked");
-                AudioClip playingit = mouseDetect.collider.GetComponent<audioholdernm>().audioclip;
-                audioSource.PlayOneShot(playingit);
+                AudioClip[] playingit = mouseDetect.collider.GetComponent<audioholdernm>().audioclip;
+                audioSource.PlayOneShot(playingit[Random.Range(0, playingit.Length)]);
             }
 
         }
