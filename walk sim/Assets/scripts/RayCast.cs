@@ -1,9 +1,5 @@
-using System.Collections;
 using Hertzole.GoldPlayer;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class RayCast : MonoBehaviour
 {
