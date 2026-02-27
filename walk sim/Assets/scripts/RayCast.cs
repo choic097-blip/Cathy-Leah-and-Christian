@@ -1,6 +1,8 @@
 using System.Collections;
 using Hertzole.GoldPlayer;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RayCast : MonoBehaviour
 {
@@ -28,7 +30,7 @@ public class RayCast : MonoBehaviour
             playerController.GetComponent<GoldPlayerController>().enabled = false;
             contrlmenu.SetActive(true);
         } 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             playerController.GetComponent<GoldPlayerController>().enabled = true;
             contrlmenu.SetActive(false);
@@ -63,8 +65,17 @@ public class RayCast : MonoBehaviour
                 AudioClip[] playingit = mouseDetect.collider.GetComponent<audioholdernm>().audioclip;
                 audioSource.PlayOneShot(playingit[Random.Range(0, playingit.Length)]);
             }
-
+            if (mouseDetect.collider.CompareTag("neontrigger"))
+            {
+                print("signing");
+                GameObject[] allNeonTVs = GameObject.FindGameObjectsWithTag("neonsign");
+                foreach (GameObject tv in allNeonTVs)
+                {
+                listgameobjectorig tvSwitch = tv.GetComponent<listgameobjectorig>();
+                tvSwitch.tvSwitch();
+                }
+            }
         }
-    }
 
     }
+ }
