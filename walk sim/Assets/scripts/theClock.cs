@@ -8,6 +8,8 @@ public class theClock : MonoBehaviour
 {
     public TextMeshProUGUI timeDisplay;
     public int hours;
+    public int displayhours;
+    public string indict = "am";
     public int minutes;
     public int multiplier;
     [SerializeField] private Texture2D skyboxNight;
@@ -18,13 +20,14 @@ public class theClock : MonoBehaviour
     [SerializeField] private Gradient graddientSunriseToDay;
     [SerializeField] private Gradient graddientDayToSunset;
     [SerializeField] private Gradient graddientSunsetToNight;
-    [SerializeField] private Light globalLight;
+    //[SerializeField] private Light globalLight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         multiplier = 1;
         hours = 8;
+        displayhours = 8;
         StartCoroutine(IncrementRoutine());
     }
 
@@ -39,15 +42,28 @@ public class theClock : MonoBehaviour
                 multiplier = 1;
             }
         } 
-        timeDisplay.text = "speed x" + multiplier + "   " + hours.ToString("00") + ":" + minutes.ToString("00");
+        timeDisplay.text = "speed x" + multiplier + "   " + displayhours.ToString("00") + ":" + minutes.ToString("00") + indict;
         if (minutes >= 60)
         {
             minutes = 0;
             hours++;
+            displayhours++;
             //OnHoursChange();
             if (hours >= 24)
             {
                 hours = 0;
+                displayhours = 0;
+                indict = "am";
+            }
+            if (hours == 12)
+            {
+                displayhours = 12;
+                indict = "pm";
+            }
+            if (hours == 13)
+            {
+                displayhours = 1;
+                indict = "pm";
             }
         }
     }

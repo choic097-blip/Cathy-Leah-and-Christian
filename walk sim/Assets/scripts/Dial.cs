@@ -16,6 +16,7 @@ public class Dial : MonoBehaviour
     public GameObject playerController;
     public GameObject myDialBox;
     public GameObject blurFilter;
+    public GameObject characterUI;
     private int index;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +24,7 @@ public class Dial : MonoBehaviour
     {
         blurFilter.SetActive(true);
         myDialBox.SetActive(true);
+        characterUI.SetActive(true);
         int theTimer = theetime.hours;
         if (theTimer is >= 0 and <= 6){
             lines = superLate;
@@ -99,6 +101,7 @@ public class Dial : MonoBehaviour
         {
             myDialBox.SetActive(false);
             blurFilter.SetActive(false);
+            characterUI.SetActive(false);
             playerController.GetComponent<GoldPlayerController>().enabled = true;
             GetComponent<Dial>().enabled = false;
         }

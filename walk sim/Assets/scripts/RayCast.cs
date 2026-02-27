@@ -1,5 +1,6 @@
 using System.Collections;
 using Hertzole.GoldPlayer;
+using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ public class RayCast : MonoBehaviour
     public GameObject playerController;
     public GameObject contrlmenu;
     public AudioSource audioSource;
+    public GameObject highlights;
     void Start()
     {
         
@@ -34,6 +36,14 @@ public class RayCast : MonoBehaviour
         {
             playerController.GetComponent<GoldPlayerController>().enabled = true;
             contrlmenu.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            highlights.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            highlights.SetActive(false);
         }
     }
 
